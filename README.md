@@ -1,1 +1,2 @@
-# language_pred
+# Language prediction
+NLP challenge
