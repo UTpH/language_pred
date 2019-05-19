@@ -1,1 +1,12 @@
+This was an interesting problem to solve.
+1. My original instinct was to try word embeddings like FastText, but I decided to first run a Mutinomial Naive Bayes(NB) for sanity check and understand the pre-processing required. As it turns out, NB returned good results(~84%) for n-grams(character) in the range (2,6)[reduced to (2,5) due to memory issues] and that single character features were not as effective(I think that may be because the given languages seems to all use the same alphabets).
+
+2. NB took pretty long to train and I kept running into Memory errors and so decided to stick with optimizing the same and not put too much time into a deeper model with word embeddings that would definitely take a load of my time. I also tried Linear regression(see ipython notebook), but could not run even a single instance without always running into memory issues(it is known to be much slower than NB). I wanted to contrast and if NB were to be better, then our dataset would follow some type of bias as NB has higher bias and lower variance.
+
+3. On second thoughts, while my NB model trained, I wasn't sure if standard embeddings would work for the current multilingual problem. I had read an article by FB research about multilingial word embeddings and how they are tyring to tackle the problem(although this is not as complex).
+I spent close to 7 hours on the problem with most of my time training and getting rid of the memory error. Possibly with better resources at hand, a word embeddings based model could be tried to see if transfer learning like effects in Computer Vision apply in our NLP case with word embeddings(flex some DL muscle!).
+
+4.I used GridSearch to run various piplnes of models and get the best estimator. It logs NB as the best with (2,5) charachter n-gram range and shows very bad performance for n-gram words. Language recognition is easier at character level and words seems to not provide enough information for classification. This was very memory intensive.
+
+=> Libraries used - (Python 3.6) Sklearn for models, pickle to save the model, Gridsearch to run pipelines of different model variations.
 
